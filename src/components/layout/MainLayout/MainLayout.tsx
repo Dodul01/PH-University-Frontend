@@ -1,45 +1,8 @@
-import { Layout, Menu, MenuProps } from "antd";
-import {
-  DashboardFilled,
-  ProfileFilled,
-  UserAddOutlined,
-} from "@ant-design/icons";
-import { createElement } from "react";
+import { Layout, Menu } from "antd";
 import { Outlet } from "react-router-dom";
+import { adminSidebarItems } from "../../../routes/admin.routes";
 
 const { Content, Header, Sider } = Layout;
-
-const items: MenuProps["items"] = [
-  {
-    key: "01",
-    label: "Dashboard",
-    icon: createElement(DashboardFilled),
-  },
-  {
-    key: "02",
-    label: "Profile",
-    icon: createElement(ProfileFilled),
-  },
-  {
-    key: "03",
-    label: "User Management",
-    icon: createElement(UserAddOutlined),
-    children: [
-      {
-        key: "04",
-        label: "Create Admin",
-      },
-      {
-        key: "05",
-        label: "Create Student",
-      },
-      {
-        key: "06",
-        label: "Create Faculty",
-      },
-    ],
-  },
-];
 
 const MainLayout = () => {
   return (
@@ -59,7 +22,7 @@ const MainLayout = () => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["4"]}
-          items={items}
+          items={adminSidebarItems}
         />
       </Sider>
       <Layout>
