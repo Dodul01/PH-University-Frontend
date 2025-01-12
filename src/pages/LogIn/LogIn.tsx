@@ -12,16 +12,15 @@ const LogIn = () => {
 
   const onSubmit = async (data) => {
     // data.preventDefault()
-    // console.log(data);
 
     const userInfo = {
-      id: data.userId,
+      id: data.id,
       password: data.password,
     };
-
+    
     const res = await login(userInfo).unwrap();
     const user = verifyToken(res.data.accessToken);
-    console.log(user);
+    console.log(res);
     
     dispatch(setUser({ user: user, token: res.data.accessToken }));
   };
