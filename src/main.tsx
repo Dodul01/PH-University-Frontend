@@ -17,7 +17,8 @@ createRoot(document.getElementById("root")!).render(
       <Toaster
         toastOptions={{
           style: {
-            background: "green",
+            background: "#292D53",
+            color: "white",
           },
           className: "class",
         }}
