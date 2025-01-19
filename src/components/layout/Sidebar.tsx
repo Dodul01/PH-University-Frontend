@@ -1,22 +1,24 @@
-import Sider from "antd/es/layout/Sider";
-import { adminPaths } from "../../routes/admin.routes";
-import { facultyPaths } from "../../routes/faculty.routes";
-import { studentPaths } from "../../routes/student.routes";
-import { sideBarItemsGenerator } from "../../utils/sideBarItemsGenerator";
-import { Menu } from "antd";
-import { useAppSelector } from "../../redux/hooks";
-import { selectCurrentUser } from "../../redux/features/auth/authSlice";
+import { Layout, Menu } from 'antd';
+import { adminPaths } from '../../routes/admin.routes';
+import { facultyPaths } from '../../routes/faculty.routes';
+import { studentPaths } from '../../routes/student.routes';
+import { useAppSelector } from '../../redux/hooks';
+import { selectCurrentUser } from '../../redux/features/auth/authSlice';
+import { sideBarItemsGenerator } from '../../utils/sideBarItemsGenerator';
+
+const { Sider } = Layout;
 
 const userRole = {
-  ADMIN: "admin",
-  FACULTY: "faculty",
-  STUDENT: "student",
+  ADMIN: 'admin',
+  FACULTY: 'faculty',
+  STUDENT: 'student',
 };
 
 const Sidebar = () => {
   const user = useAppSelector(selectCurrentUser);
+
   let sidebarItems;
-  
+
   switch (user!.role) {
     case userRole.ADMIN:
       sidebarItems = sideBarItemsGenerator(adminPaths, userRole.ADMIN);
@@ -27,6 +29,7 @@ const Sidebar = () => {
     case userRole.STUDENT:
       sidebarItems = sideBarItemsGenerator(studentPaths, userRole.STUDENT);
       break;
+
     default:
       break;
   }
@@ -35,18 +38,23 @@ const Sidebar = () => {
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
-      onBreakpoint={(broken) => {
-        console.log(broken);
-      }}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type);
-      }}
+      style={{ height: '100vh', position: 'sticky', top: '0', left: '0' }}
     >
-      <h1 style={{ color: "white", textAlign: "center" }}>PH University</h1>
+      <div
+        style={{
+          color: 'white',
+          height: '4rem',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <h1>PH Uni</h1>
+      </div>
       <Menu
         theme="dark"
         mode="inline"
-        defaultSelectedKeys={["4"]}
+        defaultSelectedKeys={['4']}
         items={sidebarItems}
       />
     </Sider>

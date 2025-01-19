@@ -5,9 +5,11 @@ import CreateAcademicDepartment from "../pages/AdminPages/AcademicManagement/Cre
 import CreateAcademicFaculty from "../pages/AdminPages/AcademicManagement/CreateAcademicFaculty";
 import CreateAcademicSemester from "../pages/AdminPages/AcademicManagement/CreateAcademicSemester";
 import AdminDashboard from "../pages/AdminPages/AdminDashboard/AdminDashboard";
-import CreateAdmin from "../pages/AdminPages/CreateAdmin/CreateAdmin";
-import CreateFaculty from "../pages/AdminPages/CreateFaculty/CreateFaculty";
-import CreateStudent from "../pages/AdminPages/CreateStudent/CreateStudent";
+import CreateAdmin from "../pages/AdminPages/UserManagement/CreateAdmin/CreateAdmin";
+import CreateFaculty from "../pages/AdminPages/UserManagement/CreateFaculty/CreateFaculty";
+import CreateStudent from "../pages/AdminPages/UserManagement/CreateStudent/CreateStudent";
+import StudentDetails from "../pages/AdminPages/UserManagement/StudentDetails/StudentDetails";
+import StudentTable from "../pages/AdminPages/UserManagement/StudentsTable/StudentsTable";
 
 export const adminPaths = [
   {
@@ -54,6 +56,20 @@ export const adminPaths = [
     name: "User Management",
     children: [
       {
+        name: "Create Student",
+        path: "create-student",
+        element: <CreateStudent />,
+      },
+      {
+        name: "Students",
+        path: "students-data",
+        element: <StudentTable />,
+      },
+      {
+        path: "student-data/:studentId",
+        element: <StudentDetails />,
+      },
+      {
         name: "Create Admin",
         path: "create-admin",
         element: <CreateAdmin />,
@@ -62,16 +78,6 @@ export const adminPaths = [
         name: "Create Faculty",
         path: "create-faculty",
         element: <CreateFaculty />,
-      },
-      {
-        name: "Create Student",
-        path: "create-student",
-        element: <CreateStudent />,
-      },
-      {
-        name: "Create Menmber",
-        path: "create-member",
-        element: <CreateStudent />,
       },
     ],
   },
